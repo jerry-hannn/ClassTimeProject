@@ -5,11 +5,12 @@ import time
 import googlemaps
 import os
 from dotenv import load_dotenv
+import config
 load_dotenv()
 
-api_key = os.environ.get('GooogleMapsApiKey')
-print(os.environ)
-url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=South%Mid%Quads&destinations=2145%Technological%Institute&units=imperial&mode=walking&key='# + api_key
+api_key = config.GMAPS_API_KEY
+print(type(api_key))
+url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=South%Mid%Quads&destinations=2145%Technological%Institute&units=imperial&mode=walking&key=' + api_key
 
 payload = {}
 headers = {}
