@@ -3,8 +3,13 @@ import requests
 from datetime import datetime
 import time
 import googlemaps
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=South%Mid%Quads&destinations=2145%Technological%Institute&units=imperial&mode=walking&key=AIzaSyBImgfFw09uTSDp_KhP7egw5zAym8Ah3ks"
+api_key = os.environ.get('GooogleMapsApiKey')
+print(os.environ)
+url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=South%Mid%Quads&destinations=2145%Technological%Institute&units=imperial&mode=walking&key='# + api_key
 
 payload = {}
 headers = {}
