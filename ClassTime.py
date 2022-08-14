@@ -5,7 +5,6 @@ from datetime import datetime
 import time
 import googlemaps
 import os
-import config
 
 
 api_key = os.environ.get('GMaps_API_KEY')
