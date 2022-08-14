@@ -6,20 +6,21 @@ import time
 import googlemaps
 import os
 
+def distances():
+    origin = input("Enter where you are departing from: ")
+    destination = input("Enter where you are going: ")
+    api_key = os.environ.get('GMaps_API_KEY')
+    url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=South%Mid%Quads&destinations=2145%Technological%Institute&units=imperial&mode=walking&key=' + api_key
 
-api_key = os.environ.get('GMaps_API_KEY')
+    response = requests.request("GET", url)
 
-url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=South%Mid%Quads&destinations=2145%Technological%Institute&units=imperial&mode=walking&key=' + api_key
-
-response = requests.request("GET", url)
-
-split = response.text.splitlines()
-for line in split:
-    stripped = line.strip()
-    if stripped.startswith('"origin_addresses"'):
-        print("From " + stripped[24:len(stripped) - 4])
-    if stripped.startswith('"destination_addresses"'):
-        print("To " + stripped[29:len(stripped) - 4])
-    if stripped.startswith('"text"'):
-        print (stripped[10:len(stripped) - 2])
+    split = response.text.splitlines()
+    for line in split:
+        stripped = line.strip()
+        if stripped.startswith('"origin_addresses"'):
+            print("From " + stripped[24:len(stripped) - 4])
+        elif stripped.startswith('"destination_addresses"'):
+            print("To " + stripped[29:len(stripped) - 4])
+        elif stripped.startswith('"text"'):
+            print (stripped[10:len(stripped) - 2])
 #print(response.text)
