@@ -5,10 +5,19 @@ from datetime import datetime
 import time
 import googlemaps
 import os
+import LocationData
 
 def distances():
-    origin = input("Enter where you are departing from: ")
-    destination = input("Enter where you are going: ")
+    origin = input("Enter class/dorm you are departing from: ")
+    destination = input("Enter class/dorm you are going to: ")
+    if origin in LocationData.Dorms:
+        origin_address = LocationData.Dorms.get(origin)
+    elif origin in LocationData.cs:
+        origin_address = LocationData.cs.get(origin)
+    elif origin in LocationData.dtc:
+        origin_address = LocationData.dtc.get(origin)
+    # Continue doing this elif stuff, find a way to do it better later
+
     api_key = os.environ.get('GMaps_API_KEY')
     url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=South%Mid%Quads&destinations=2145%Technological%Institute&units=imperial&mode=walking&key=' + api_key
 
