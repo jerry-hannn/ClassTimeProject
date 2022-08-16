@@ -3,16 +3,16 @@ ea = {
     "ea1_dis":"Frances%Searle$Building"
 }
 cs = {
-    "111-0":"Technological%Institute",
-    "211-0":"Technological%Institute"
+    "cs 111-0":"Technological%Institute",
+    "cs 211-0":"Technological%Institute"
 }
 math = {
-    "220-1":"Technological%Institute",
-    "220-1_dis":"Lunt%Hall"
+    "math 220-1":"Technological%Institute",
+    "math 220-1_dis":"Lunt%Hall"
 }
 dtc = {
-    "lecture":"Ford%Motor$Company$Engineering$Design$Center",
-    "dis":"Technological%Institute"
+    "dtc lecture":"Ford%Motor$Company$Engineering$Design$Center",
+    "dtc dis":"Technological%Institute"
 }
 Dorms = {
     "636 emerson":"636%Emerson%St%Evanston%Illinois",
@@ -24,4 +24,13 @@ Dorms = {
     "1856 orrington":"1856%Orrington%Ave%Evanston%Illinois",
     "1856 orrington ave":"1856%Orrington%Ave%Evanston%Illinois",
     "SMQ":"South%Mid%Quads"
+}
+other = {
+    "spac":"Henry%Crown%Sports%Pavilion",
+    "mudd":"Mudd%Library",
+    "blom":"Blomquist%Recreation%Center",
+    "main":"1970%Campus%Dr$Evanston$Illinois",
+    "norris":"Norris%University%Center",
+    "kellogg":"Kellogg%Global%Hub",
+    "bienen":"Bienen%School%Of%Music",
 }
