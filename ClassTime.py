@@ -2,6 +2,7 @@
 # This only supports point to point currently.
 # This will eventually export data in some form, currently, it only exports the addresses and then the distance and walking time.
 # bunch of imports
+from locale import setlocale
 import requests
 from datetime import datetime
 import time
@@ -9,39 +10,25 @@ import googlemaps
 import os
 import LocationData
 
+def setLocation(location):
+    if location in LocationData.Dorms:
+        location_address = LocationData.Dorms.get(location)
+    elif location in LocationData.cs:
+        location_address = LocationData.cs.get(location)
+    elif location in LocationData.dtc:
+        origin_address = LocationData.dtc.get(location)
+    elif location in LocationData.math:
+        location_address = LocationData.math.get(location)
+    elif location in LocationData.ea:
+        location_address = LocationData.ea.get(location)
+    elif location in LocationData.other:
+        location_address = LocationData.other.get(location)
+    return location_address
+
 def distances():
-    origin = input("Enter class/dorm/building you are departing from: ").lower()
-    destination = input("Enter class/dorm/building you are going to: ").lower()
-    if origin in LocationData.Dorms:
-        origin_address = LocationData.Dorms.get(origin)
-    elif origin in LocationData.cs:
-        origin_address = LocationData.cs.get(origin)
-    elif origin in LocationData.dtc:
-        origin_address = LocationData.dtc.get(origin)
-    elif origin in LocationData.math:
-        origin_address = LocationData.math.get(origin)
-    elif origin in LocationData.ea:
-        origin_address = LocationData.ea.get(origin)
-    elif origin in LocationData.other:
-        origin_address = LocationData.other.get(origin)
-
-
-    if destination in LocationData.Dorms:
-        destination_address = LocationData.Dorms.get(destination)
-    elif destination in LocationData.cs:
-        destination_address = LocationData.cs.get(destination)
-    elif destination in LocationData.dtc:
-        destination_address = LocationData.dtc.get(destination)
-    elif destination in LocationData.math:
-        destination_address = LocationData.math.get(destination)
-    elif destination in LocationData.ea:
-        destination_address = LocationData.ea.get(destination)
-    elif destination in LocationData.other:
-        destination_address = LocationData.other.get(destination)
-    # Continue doing this elif stuff, find a way to do it better later
 
     api_key = os.environ.get('GMaps_API_KEY')
-    url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin_address + '&destinations=2145%' + destination_address + '&units=imperial&mode=walking&key=' + api_key
+    url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin_address + '&destinations=' + destination_address + '&units=imperial&mode=walking&key=' + api_key
 
     response = requests.request("GET", url)
 
@@ -55,4 +42,6 @@ def distances():
         elif stripped.startswith('"text"'):
             print (stripped[10:len(stripped) - 2])
 #print(response.text)
+origin_address = setLocation(input("Enter class/dorm/building you are departing from: ").lower())
+destination_address = setLocation(input("Enter class/dorm/building you are going to: ").lower())
 distances()
