@@ -33,4 +33,6 @@ other = {
     "norris":"Norris%University%Center",
     "kellogg":"Kellogg%Global%Hub",
     "bienen":"Bienen%School%Of%Music",
+    "wirtz":"The%Virginia%Wadsworth%Wirtz%Center",
+    "tech":"Northwestern$University$Technological$Institute",
 }
