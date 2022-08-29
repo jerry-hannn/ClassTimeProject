@@ -35,4 +35,6 @@ other = {
     "bienen":"Bienen%School%Of%Music",
     "wirtz":"The%Virginia%Wadsworth%Wirtz%Center",
     "tech":"Northwestern$University$Technological$Institute",
+    "deering":"Deering$Library",
+    "Regenstein":"Regenstein$Hall$Of$Music",
 }
