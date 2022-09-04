@@ -23,7 +23,7 @@ Dorms = {
     "1838 chicago":"1838%Chicago%Ave%Evanston%Illinois",
     "1856 orrington":"1856%Orrington%Ave%Evanston%Illinois",
     "1856 orrington ave":"1856%Orrington%Ave%Evanston%Illinois",
-    "SMQ":"South%Mid%Quads"
+    "smq":"South%Mid%Quads"
 }
 other = {
     "spac":"Henry%Crown%Sports%Pavilion",

@@ -42,6 +42,20 @@ def distances():
         elif stripped.startswith('"text"'):
             print (stripped[10:len(stripped) - 2])
 #print(response.text)
-origin_address = setLocation(input("Enter class/dorm/building you are departing from: ").lower())
-destination_address = setLocation(input("Enter class/dorm/building you are going to: ").lower())
-distances()
+#origin_address = setLocation(input("Enter class/dorm/building you are departing from: ").lower())
+#destination_address = setLocation(input("Enter class/dorm/building you are going to: ").lower())
+destinationList = []
+origin_address = None
+destination_address = None
+def takeInput():
+    while True:
+        next = input("Enter your first location, next location, or type Done:")
+        if next.lower() == "done":
+            break
+        else:
+            destinationList.append(next.lower())
+takeInput()
+for i in range(len(destinationList) - 1):
+    origin_address = setLocation(destinationList[i])
+    destination_address = setLocation(destinationList[i + 1])
+    distances()
