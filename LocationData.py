@@ -1,3 +1,7 @@
+#Database for ClassTime!
+#Unfortunately this only contains data from my fall quarter classes
+#Added new common buildings
+
 ea = {
     "ea1":"Technological%Institute",
     "ea1_dis":"Frances%Searle$Building"
