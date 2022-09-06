@@ -1,15 +1,23 @@
-# My first attempt at calling APIs! Currently, this can take input of the few hardcoded classes in my schedule and a couple of dorms and other buildings.
-# This only supports point to point currently.
+# My first attempt at calling APIs!
+# This now supports going to multiple locations in a row. 
 # This will eventually export data in some form, currently, it only exports the addresses and then the distance and walking time.
-# bunch of imports
-from locale import setlocale
-import requests
-from datetime import datetime
-import time
-import googlemaps
-import os
-import LocationData
 
+# bunch of imports
+from locale import setlocale #not strictly necessary for this
+import requests
+from datetime import datetime #not stricly necessary for this.
+import time #hopefully trying to get this to output something more useful with this, not stricly necessary for this version
+import googlemaps #API for distance and time
+import os #for env variable
+import LocationData #database
+
+#some vars for later
+destinationList = []
+origin_address = None
+destination_address = None
+
+#sets location to something in the database
+#would like to make this less hardcoded soon.
 def setLocation(location):
     if location in LocationData.Dorms:
         location_address = LocationData.Dorms.get(location)
@@ -25,8 +33,8 @@ def setLocation(location):
         location_address = LocationData.other.get(location)
     return location_address
 
+#api call and strip down JSON
 def distances():
-
     api_key = os.environ.get('GMaps_API_KEY')
     url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin_address + '&destinations=' + destination_address + '&units=imperial&mode=walking&key=' + api_key
 
@@ -41,12 +49,8 @@ def distances():
             print("To " + stripped[29:len(stripped) - 4])
         elif stripped.startswith('"text"'):
             print (stripped[10:len(stripped) - 2])
-#print(response.text)
-#origin_address = setLocation(input("Enter class/dorm/building you are departing from: ").lower())
-#destination_address = setLocation(input("Enter class/dorm/building you are going to: ").lower())
-destinationList = []
-origin_address = None
-destination_address = None
+
+#this takes input until done is typed
 def takeInput():
     while True:
         next = input("Enter your first location, next location, or type Done:")
@@ -54,6 +58,8 @@ def takeInput():
             break
         else:
             destinationList.append(next.lower())
+
+#main code run starts here
 takeInput()
 for i in range(len(destinationList) - 1):
     origin_address = setLocation(destinationList[i])
