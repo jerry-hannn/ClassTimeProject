@@ -1,5 +1,6 @@
 #Database for ClassTime!
 #Unfortunately this only contains data from my fall quarter classes
+#Checking with Ethan about his JS script to interface with Canvas
 #Added new common buildings
 
 ea = {

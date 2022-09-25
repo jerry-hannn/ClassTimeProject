@@ -7,7 +7,7 @@ from locale import setlocale #not strictly necessary for this
 import requests
 from datetime import datetime #not stricly necessary for this.
 import time #hopefully trying to get this to output something more useful with this, not stricly necessary for this version
-import googlemaps #API for distance and time
+#import googlemaps #API for distance and time
 import os #for env variable
 import LocationData #database
 
